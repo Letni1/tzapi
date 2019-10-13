@@ -31,8 +31,9 @@ MONGO_PASS = 'admin'
 MONGO_HOST = 'localhost'
 MONGO_PORT = '27017'
 MONGO_DB = 'stats'
+MONGO_AUTH = 'admin'
 
-MONGODB_URL = f'mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}'
+MONGODB_URL = f'mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}?authSource={MONGO_AUTH}'
 
 mongo_db_name = MONGO_DB
 exchange_collection_name = 'exchange'

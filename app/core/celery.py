@@ -1,5 +1,6 @@
 from celery import Celery
-from app.core.config import BROKER_URL, CELERY_RESULT_BACKEND
+from app.core.config import BROKER_URL, REDIS_URL
 
-celery_app = Celery('worker', backend=CELERY_RESULT_BACKEND, broker=BROKER_URL)
+celery_app = Celery('worker', backend=REDIS_URL, broker=BROKER_URL)
 
+celery_app.conf.task_routes = {'app.worker.test_celery': 'main-queue'}

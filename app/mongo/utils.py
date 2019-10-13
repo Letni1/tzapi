@@ -1,5 +1,4 @@
 import logging
-
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.core.config import MONGODB_URL
 from app.mongo.mongodb import db
