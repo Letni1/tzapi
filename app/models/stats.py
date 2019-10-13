@@ -1,14 +1,23 @@
-from pydantic import BaseModel
+from datetime import datetime
 from typing import List
+from pydantic import BaseModel
 
 
 class StatsBase(BaseModel):
-    exchange: List[dict]
+    r030: str
+    txt: str
+    rate: float
+    cc: str
+    exchangedate: datetime
 
 
-class StatsGet(StatsBase):
-    date: int
-
-
-class Stats(StatsGet):
+class StatsInDB(StatsBase):
     pass
+
+
+class Stats(StatsInDB):
+    pass
+
+
+class StatsInResponse(BaseModel):
+    stats: List[Stats]

@@ -1,4 +1,4 @@
-NBU_URL = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange'
+NBU_STAT_URL = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange'
 
 SECRET_KEY = '0b7d8a6df726145a0228b990e8c444347b53baa55883ada8934debadf63b0582'
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 8  # 60 minutes * 24 hours * 8 days = 8 days
@@ -32,5 +32,7 @@ MONGO_HOST = 'localhost'
 MONGO_PORT = '27017'
 MONGO_DB = 'stats'
 
-MONGODB_URL = f'mongodb://{MONGO_USER}{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}'
+MONGODB_URL = f'mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}'
 
+mongo_db_name = MONGO_DB
+exchange_collection_name = 'exchange'
