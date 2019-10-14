@@ -11,3 +11,4 @@ def bulk_insert_if_not_exist(conn: MongoClient, data: list):
     conn[mongo_db_name][exchange_collection_name].bulk_write(
         [UpdateOne(stat, {'$set': stat}) for stat in data]
     )
+
