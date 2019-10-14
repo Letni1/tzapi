@@ -5,6 +5,7 @@ from app.api.api_v1.api import api_router
 from app.core import config
 from app.db.session import Session
 from app.mongo.utils import connect_to_mongo, close_mongo_connection
+from app.worker import add_stats_to_mongodb
 
 app = FastAPI()
 
@@ -26,6 +27,11 @@ app.add_middleware(
 app.include_router(api_router, prefix=config.API_V1_STR)
 app.add_event_handler('startup', connect_to_mongo)
 app.add_event_handler('shutdown', close_mongo_connection)
+
+
+@app.on_event('startup')
+def celery_tasks():
+    add_stats_to_mongodb.delay(20180512, 20191012)
 
 
 @app.middleware("http")

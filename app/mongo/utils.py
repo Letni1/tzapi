@@ -1,12 +1,12 @@
 import logging
-from motor.motor_asyncio import AsyncIOMotorClient
+from pymongo import MongoClient
 from app.core.config import MONGODB_URL
 from app.mongo.mongodb import db
 
 
 async def connect_to_mongo():
     logging.info('Connecting to db')
-    db.client = AsyncIOMotorClient(str(MONGODB_URL))
+    db.client = MongoClient(str(MONGODB_URL))
     logging.info("Connected to db")
 
 
