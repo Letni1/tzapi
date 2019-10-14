@@ -25,3 +25,4 @@ def date_to_nbu(date: datetime) -> str:
     date_str = str(date.date())
     date_nbu = ''.join(date_str.split('-'))
     return date_nbu
+
