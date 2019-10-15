@@ -31,7 +31,7 @@ app.add_event_handler('shutdown', close_mongo_connection)
 
 @app.on_event('startup')
 def celery_tasks():
-    add_stats_to_mongodb.delay(20180512, 20191012)
+    add_stats_to_mongodb.delay(20141012, 20191012)
 
 
 @app.middleware("http")

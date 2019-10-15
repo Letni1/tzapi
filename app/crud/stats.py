@@ -1,5 +1,5 @@
 from app.mongo.mongodb import MongoClient
-from pymongo import UpdateOne
+from pymongo.operations import UpdateOne
 from app.core.config import mongo_db_name, exchange_collection_name
 
 
@@ -9,6 +9,5 @@ def insert_if_not_exist(conn: MongoClient, data: dict):
 
 def bulk_insert_if_not_exist(conn: MongoClient, data: list):
     conn[mongo_db_name][exchange_collection_name].bulk_write(
-        [UpdateOne(stat, {'$set': stat}) for stat in data]
+        [UpdateOne(stat, {'$set': stat}, upsert=True) for stat in data]
     )
-
